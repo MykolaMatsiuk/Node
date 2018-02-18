@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  each user in users
+    p 
+      a(href="/blogs/" + user.id) Posted 
+      | on #{user.date.toString().split(" ").slice(0, 5).join(" ")} 
+      | by #{user.name} #{user.age}y.o. #{user.email}
+    p= user.blog
+    hr

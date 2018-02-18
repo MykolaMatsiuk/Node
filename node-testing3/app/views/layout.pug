@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+  body
+    div.blog-masthead
+      div.container
+        nav.nav.blog-nav
+          a.navbar-brand(href="/") Postius
+          a.nav-link(href="/register") Leave post
+          a.nav-link(href="/blogs") Posts
+    div.container
+      block content

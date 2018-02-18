@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  form.form-horizontal(action='/blogs/' + user.id method='post')
+    p Posted on #{user.date.toString().split(" ").slice(0, 5).join(" ")} 
+      | by #{user.name} #{user.age}y.o. #{user.email}
+    p= user.blog
+    button.btn.btn-warning(type='submit')
+      | Delete post
+  form.form-horizontal(action='/blogs/'  + user.id + '/update' method='post')
+    div.form-group
+      label(for="blog").col-sm-3.col-form-label Edit your post:
+      div.col-sm-10
+        textarea(name="newBlog").form-control#blog #{user.blog}
+    button.btn.btn-info(type='submit')
+      | Update
+    hr
+
