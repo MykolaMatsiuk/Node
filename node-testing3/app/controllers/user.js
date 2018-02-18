@@ -24,9 +24,8 @@ exports.signup = function (req, res, next) {
   res.redirect('/blogs');
 };
 
-exports.blogs = function (req, res) {
+exports.blogs = function (req, res, next) {
   User.find(function (err, users) {
-    console.log(users.date)
     res.render('blogs', {
       title: "Posts",
       users: users
