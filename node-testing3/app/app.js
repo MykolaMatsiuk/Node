@@ -5,12 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var routes = require('./routes/routes');
 
-
-var userController = require('./controllers/user');
-var homeController = require('./controllers/home');
 
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,13 +23,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', homeController.index);
-app.get('/register', userController.register);
-app.post('/register', userController.signup);
-app.get('/blogs', userController.blogs);
-app.get('/blogs/:id', userController.blog);
-app.post('/blogs/:id', userController.deleteBlog);
-app.post('/blogs/:id/update', userController.updateBlog);
+//connecting of routes
+app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
